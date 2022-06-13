@@ -2,6 +2,10 @@ package serasinha.model;
 
 import javax.persistence.*;
 
+/**
+*
+* @author millenacosta
+*/
 @Entity
 public class Wallet {
     @Id @GeneratedValue(strategy=GenerationType.AUTO)
