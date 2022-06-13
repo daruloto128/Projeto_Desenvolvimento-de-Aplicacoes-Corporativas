@@ -27,9 +27,10 @@ public class Bank_Card implements Serializable{
     @Column(nullable=false)
     private String account_number;
 
-    public Bank_Card(String card_number, Integer security_code, String date_validity, String agency,
+    public Bank_Card(Long id, String card_number, Integer security_code, String date_validity, String agency,
 			String account_number) {
 		super();
+		this.id = id;
 		this.card_number = card_number;
 		this.security_code = security_code;
 		this.date_validity = date_validity;
@@ -55,17 +56,17 @@ public class Bank_Card implements Serializable{
 		String account_number
 		
 	) {
-    	Bank_Card bankCard = new Bank_Card(card_number, security_code, date_validity, agency, account_number);
+    	Bank_Card bankCard = new Bank_Card(null, card_number, security_code, date_validity, agency, account_number);
     	
     	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "serasinhadb" );
     	EntityManager entityManager = emfactory.createEntityManager();
     	entityManager.getTransaction().begin();
 	   	entityManager.persist(bankCard);
-	   	Query query = entityManager.createQuery("FIND User by card_number");
+	   	Query query = entityManager.createQuery("Select bc from Bank_Card bc where bc.card_number = :card_number");
     	query.setParameter("card_number", card_number);
     	
     	@SuppressWarnings("unchecked")
-		List<User> list = query.getResultList();
+		List<Bank_Card> list = query.getResultList();
         Long bank_card_id = list.get(0).getId();
         
         Query updateAccountQuery = entityManager.createQuery(

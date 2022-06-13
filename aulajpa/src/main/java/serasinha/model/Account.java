@@ -91,8 +91,8 @@ public class Account implements Serializable {
             Float score
     ) {
         //instancio a classe e persisto o user
-        User user = new User(id, name, phone, email, password, account_id, score);
-        user.createUser(id, name, phone, email, password, getId(), score);
+        User user = new User(name, phone, email, password, account_id, score);
+        user.createUser(name, phone, email, password, getId(), score);
 
         //instancio a classe e persisto a wallet
         Wallet wallet = new Wallet(getId(), 0F);

@@ -44,8 +44,9 @@ public class Serasinha_Loan implements Serializable{
 		this.date = date;
 	}
 
-	private User getUser(Long user_id) {
+    private User getUser(Long user_id) {
     	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "serasinhadb" );
+
     	EntityManager entitymanager = emfactory.createEntityManager();
     	Query query = entitymanager.createQuery("FIND User by id");
     	query.setParameter("id", user_id);

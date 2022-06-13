@@ -60,9 +60,8 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    public User(Long id, String name, String email, String phone, Long password, Long account_id, Float score) {
+    public User(String name, String email, String phone, Long password, Long account_id, Float score) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.phone = phone;
@@ -80,7 +79,6 @@ public class User implements Serializable {
 
     @Override
     public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
         if (!(object instanceof User)) {
             return false;
         }
@@ -112,8 +110,8 @@ public class User implements Serializable {
         this.score = score;
     }
     
-    public void createUser(Long id, String name, String email, String phone, Long password, Long account_id, Float score) {
-        User user = new User(id, name, phone,email, password, account_id, score);
+    public void createUser(String name, String email, String phone, Long password, Long account_id, Float score) {
+        User user = new User(name, phone,email, password, account_id, score);
         EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("serasinhadb");
         EntityManager entityManager = emfactory.createEntityManager();
         entityManager.getTransaction().begin();
