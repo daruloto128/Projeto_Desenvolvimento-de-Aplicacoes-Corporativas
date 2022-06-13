@@ -60,7 +60,18 @@ public class User implements Serializable {
         this.id = id;
     }
 
-    @Override
+    public User(Long id, String name, String email, String phone, Long password, Long account_id, Float score) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.phone = phone;
+		this.password = password;
+		this.account_id = account_id;
+		this.score = score;
+	}
+
+	@Override
     public int hashCode() {
         int hash = 0;
         hash += (id != null ? id.hashCode() : 0);
@@ -99,5 +110,15 @@ public class User implements Serializable {
 
     public void setScore(Float score) {
         this.score = score;
+    }
+    
+    public void createUser(Long id, String name, String email, String phone, Long password, Long account_id, Float score) {
+        User user = new User(id, name, phone,email, password, account_id, score);
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory("serasinhadb");
+        EntityManager entityManager = emfactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(user);
+        entityManager.getTransaction().commit();
+
     }
 }

@@ -22,7 +22,23 @@ public class Account implements Serializable {
     @Transient
     private Long bank_card_id;
 
-    public Long getId() {
+    
+    public Account(Long id, Long wallet_id, Long user_id, Long bank_card_id) {
+		super();
+		this.id = id;
+		this.wallet_id = wallet_id;
+		this.user_id = user_id;
+		this.bank_card_id = bank_card_id;
+	}
+    
+    public Account(Long wallet_id, Long user_id){
+        super();
+        this.wallet_id = wallet_id;
+        this.user_id = user_id;
+	//        this.bank_card_id = bank_card_id;
+    }
+    
+	public Long getId() {
         return id;
     }
 
@@ -41,7 +57,6 @@ public class Account implements Serializable {
     }
 
     public void requestLoan() {
-
     }
 
 
@@ -64,7 +79,35 @@ public class Account implements Serializable {
         }
         return true;
     }
+    
+    public void createAccount(
+            Long user_id,
+            Long wallet_id, 
+            String name, 
+            String phone, 
+            String email, 
+            Long password,
+            Long account_id, 
+            Float score
+    ) {
+        //instancio a classe e persisto o user
+        User user = new User(id, name, phone, email, password, account_id, score);
+        user.createUser(id, name, phone, email, password, getId(), score);
 
+        //instancio a classe e persisto a wallet
+        Wallet wallet = new Wallet(getId(), 0F);
+        wallet.createWallet(getId());
+
+        //por ultimo, persisto a account
+        Account account = new Account(user.getId(), wallet.getId());
+
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "serasinhadb" );
+        EntityManager entityManager = emfactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(account);
+        entityManager.getTransaction().commit();
+    }
+    
     @Override
     public String toString() {
         return "aplicacao.Account[ id=" + id + " ]";
