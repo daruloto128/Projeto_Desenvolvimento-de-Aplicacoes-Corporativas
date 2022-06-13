@@ -2,6 +2,7 @@ package serasinha.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import serasinha.model.*;
 
 @Entity
 public class Transaction implements Serializable{
@@ -18,7 +19,7 @@ public class Transaction implements Serializable{
     @Column(nullable=false)
     private Float value;
     @Column(nullable=false)
-    private String date_validity;
+    private String date;
 	
     public Long getId() {
 		return id;
@@ -27,25 +28,31 @@ public class Transaction implements Serializable{
 		this.id = id;
 	}
 	
-	public Transaction(Long buyer_account_id, Long seller_account_id, Float value, String date_validity) {
+	public Transaction(Long buyer_account_id, Long seller_account_id, Float value, String date) {
 		super();
 		this.buyer_account_id = buyer_account_id;
 		this.seller_account_id = seller_account_id;
 		this.value = value;
-		this.date_validity = date_validity;
+		this.date = date;
 	}
 
 	public void createTransaction(
-            Long user_id,
-            Long wallet_id, 
-            String name, 
-            String phone, 
-            String email, 
-            Long password,
-            Long account_id, 
-            Float score
+            Long buyer_account_id, 
+            Long seller_account_id, 
+            Float value, 
+            String date 
     ) {
-        //instancio a classe e persisto o user
+        Transaction transaction = new Transaction(buyer_account_id, seller_account_id, value, date);
+        EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "serasinhadb" );
+        EntityManager entityManager = emfactory.createEntityManager();
+        entityManager.getTransaction().begin();
+        entityManager.persist(transaction);
+        entityManager.getTransaction().commit();
     }
+	
+	public void transferMoney(Long seller_account_id, Float value, String date) {
+		Transaction transaction = new Transaction(this.getId(), seller_account_id, value, date);
+		transaction.createTransaction(seller_account_id, buyer_account_id, value, date);
+	}
     
 }
