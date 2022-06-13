@@ -1,5 +1,4 @@
-<<<<<<< Updated upstream
-<<<<<<< HEAD
+
 package serasinha.model;
 
 import javax.persistence.*;
@@ -39,10 +38,8 @@ public class Wallet {
     
     
 }
-=======
-=======
-//<<<<<<< HEAD
->>>>>>> Stashed changes
+
+
 //package serasinha.model;
 //
 //import javax.persistence.*;

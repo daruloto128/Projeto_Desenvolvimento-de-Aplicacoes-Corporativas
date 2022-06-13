@@ -35,8 +35,17 @@ public class Serasinha_Loan implements Serializable{
         this.id = id;
     }
     
-    private User getUser(Long user_id) {
-    	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "meu_banco" );
+    public Serasinha_Loan(Long user_id, Long bank_card_id, Float value, Float loan_rate, Date date) {
+		super();
+		this.user_id = user_id;
+		this.bank_card_id = bank_card_id;
+		this.value = value;
+		this.loan_rate = loan_rate;
+		this.date = date;
+	}
+
+	private User getUser(Long user_id) {
+    	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "serasinhadb" );
     	EntityManager entitymanager = emfactory.createEntityManager();
     	Query query = entitymanager.createQuery("FIND User by id");
     	query.setParameter("id", user_id);
