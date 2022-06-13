@@ -36,7 +36,7 @@ public class Serasinha_Loan implements Serializable{
     }
     
     private User getUser(Long user_id) {
-    	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "serasinhadb" );
+    	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "meu_banco" );
     	EntityManager entitymanager = emfactory.createEntityManager();
     	Query query = entitymanager.createQuery("FIND User by id");
     	query.setParameter("id", user_id);

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 package serasinha.model;
 
 import javax.persistence.*;
@@ -41,3 +42,20 @@ public class Wallet {
     
     
 }
+=======
+//package serasinha.model;
+//
+//import java.io.Serializable;
+//import javax.persistence.*;
+//
+///**
+//*
+//* @author millenacosta
+//*/
+//@Entity
+//public class Wallet implements Serializable{
+//
+//	
+//
+//}
+>>>>>>> parent of e00f826 (upload JPA project)
