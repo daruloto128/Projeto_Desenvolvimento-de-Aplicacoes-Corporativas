@@ -6,7 +6,7 @@
     <provider>org.hibernate.ejb.HibernatePersistence</provider>        
         <properties>
             <property name="javax.persistence.jdbc.url" 
-            	value="jdbc:mysql://localhost/serasinha" />
+            	value="jdbc:mysql://b0774b79d2e5d2:99ad8ad5@us-cdbr-east-05.cleardb.net/heroku_7a3e8d054632618?reconnect=true" />
             <property name="hibernate.dialect" 
             	value="org.hibernate.dialect.MySQL5Dialect" />
  			<property name="javax.persistence.jdbc.driver" 
@@ -18,3 +18,5 @@
         </properties>
     </persistence-unit>
 </persistence>
+
+
