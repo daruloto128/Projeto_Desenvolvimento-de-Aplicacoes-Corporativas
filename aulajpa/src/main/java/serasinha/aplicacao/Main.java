@@ -1,30 +1,17 @@
-package aulajpa.aplicacao;
+package serasinha.aplicacao;
 
-import javax.persistence.Persistence;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-
-import aulajpa.model.Pessoa;
+import javax.persistence.*;
+import serasinha.model.*;
 
 public class Main {
 
 	public static void main(String[] args) {
 
-		Pessoa p1 = new Pessoa(null, "Dan", "dan@dan.com.br");
-		Pessoa p2 = new Pessoa(null, "dani", "dani@dani.com.br");
-		
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("exemplo-jpa");
-		EntityManager em = emf.createEntityManager();
-		
-		em.getTransaction().begin();
-		em.persist(p1);
-		em.persist(p2);
-		em.getTransaction().commit();
+		Bank_Card card = new Bank_Card(null, null, null, null, null);
+		card.registerCreditCard("123", 123, "13/06/2022", "001", "00000000");
 		
 		System.out.println("Cadastrado com sucesso!");
 		
-		em.close();
-		emf.close();
 	}
 
 }
