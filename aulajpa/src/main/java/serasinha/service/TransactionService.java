@@ -8,6 +8,8 @@ import javax.ws.rs.*;
 import serasinha.model.*;
 
 @Path("transaction")
+@Produces({"application/json", "application/xml"})
+@Consumes({"application/json", "application/xml"})
 public class TransactionService {
 	
 	@POST
