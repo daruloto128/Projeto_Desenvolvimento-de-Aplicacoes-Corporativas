@@ -25,8 +25,8 @@ public class Wallet {
 		this.amount = amount;
 	}
 	
-	public void createWallet() {
-		Wallet wallet = new Wallet(null, 0F);
+	public void createWallet(Long account_id) {
+		Wallet wallet = new Wallet(account_id, 0F);
     	
     	EntityManagerFactory emfactory = Persistence.createEntityManagerFactory( "serasinhadb" );
     	EntityManager entityManager = emfactory.createEntityManager();
