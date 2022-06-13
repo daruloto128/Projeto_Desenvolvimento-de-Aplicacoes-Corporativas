@@ -1,12 +1,12 @@
 //package serasinha.model;
 //
 //import java.io.Serializable;
+//import javax.persistence.*;
 //
-//import javax.persistence.Entity;
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
-//import javax.persistence.Id;
-//
+///**
+//*
+//* @author millenacosta
+//*/
 //@Entity
 //public class Wallet implements Serializable{
 //

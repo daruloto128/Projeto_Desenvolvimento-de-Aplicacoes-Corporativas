@@ -5,6 +5,10 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.*;
 
+/**
+*
+* @author nicolasbicalho
+*/
 @Entity
 public class Serasinha_Loan implements Serializable{
 
